@@ -1,2 +1,6 @@
 # .keep files for directory structure only
 *.keep
+
+# other github files
+License
+README.md
