@@ -6,7 +6,7 @@ Set of scripts for extracting polygenic risk scores data from http://geneatlas.r
 http://geneatlas.roslin.ed.ac.uk
 
 ## extractPGRS.sh
-
+```
 Script:
  INPUTS:  inputFolder (location for gene atlas PGRS files (eg chr1.csv, snp.chr1.csv, ..., chr22.csv, snp.chr22.csv)
           binariesFolder (bed/bim/fam file location for merged binaries for which to calculate risk scores)
@@ -17,7 +17,9 @@ Script:
 
  EXAMPLE:
 sh extractPGRS.sh atlasFiles/ binaryFiles/ 0.000005 output/
+```
 
+```
  Directory structure for example:
 | script/directory
 | - script.sh
@@ -30,4 +32,4 @@ sh extractPGRS.sh atlasFiles/ binaryFiles/ 0.000005 output/
     | - PNCchr1.bim, PNCchr1.bed, PNCchr1.fam, ..., PNCchr22.bim, PNCchr22.bed, PNCchr22.fam
 | - | output
 | - | tmp
-
+```
