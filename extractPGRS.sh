@@ -9,6 +9,8 @@ echo 'outputFolder = ' $4
 module load plink2
 module load R
 
+Rscript ./Rscripts/checkPackages.R
+
 mkdir -p tmp
 
 i=1
