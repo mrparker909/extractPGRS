@@ -1,4 +1,3 @@
-.libPaths("/zfs3/users/matthew.parker/matthew.parker/R/x86_64-pc-linux-gnu-library/3.5/")
 library(dplyr, quietly=T, warn.conflicts=F)
 library(magrittr, quietly=T, warn.conflicts=F)
 library(pracma, quietly=T, warn.conflicts=F)
