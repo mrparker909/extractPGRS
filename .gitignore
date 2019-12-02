@@ -1,8 +1,5 @@
-.gitignore
-
 # .keep files for directory structure only
 *.keep
 
 # other github files
-LICENSE
 *.md
