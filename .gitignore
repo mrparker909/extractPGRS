@@ -1,3 +1,5 @@
+.gitignore
+
 # .keep files for directory structure only
 *.keep
 
