@@ -1,25 +1,23 @@
-library("dplyr", quietly=T, warn.conflicts=FALSE)
-library("magrittr", quietly=T, warn.conflicts=FALSE)
-library("argparser", quietly=T, warn.conflicts=FALSE)
+
+libPath = .libPaths()[1]
+if(file.exists("RlibPath.txt")) {
+  libPath = paste(readLines("RlibPath.txt"), collapse=" ")
+}
+
+if(!require(dplyr, quietly=T, warn.conflicts=F)) { install.packages("dplyr", lib=libPath, dependencies=T,repos = "http://cran.us.r-project.org", quiet=T) }
+if(!require(magrittr, quietly=T, warn.conflicts=F)) { install.packages("magrittr", lib=libPath, dependencies=T,repos = "http://cran.us.r-project.org", quiet=T) }
+
+library("dplyr", quietly=T, warn.conflicts=FALSE, lib=libPath)
+library("magrittr", quietly=T, warn.conflicts=FALSE, lib=libPath)
+
 # command args are:
 # [1] atlas file to filter
 # [2] pval threshold for filtering
 # [3] index
-
-# Create a parser
-p <- arg_parser("Filter atlas file SNPs based on p-value threshold.")
-
-# Add command line arguments
-p <- add_argument(p, "--atlasFile", help="Atlas polygenic risk score weights file", type="character")
-p <- add_argument(p, "--pvalue", help="pvalue threshold above which SNPs will be excluded from the polygenic risk score", default=0.000005)
-p <- add_argument(p, "--index", help="index used for multiple atlas files (eg chromosomes 1 through 22), prevents overwriting of atlas.tmp file", type="numeric", default=0)
-
-# Parse the command line arguments
-argv <- parse_args(p)
-
-inFile = argv$atlasFile
-pval   = argv$pvalue
-ind    = argv$index
+args   = commandArgs(trailingOnly=T)
+inFile = args[1]
+pval   = as.numeric(args[2])
+ind    = as.integer(args[3])
 
 dat1 = NULL
 dat2 = NULL
