@@ -119,3 +119,19 @@ sh extractPGRS.sh atlasFiles/ binaryFiles/ 0.000000005 output/
    The PGRS will be located in the "./output/" directory (or whichever output directory was specified). The risk scores will be written to the file "RiskScores.tsv", with the first column containing the subject IDs, and the second column containing the calculated risk scores for each subject.
    
    Several .stats files are produced to track operations throughout the process. 
+   
+## Stats Files
+
+```
+- missing_SNPs.stats
+- AllelesChangedToEffectAllele.stats
+- SNPsAfterThresh*.stats
+```
+
+   missing_SNPs.stats: lists the SNPs which meet the criteria for inclusion in calculating the PGRS, but which are not present in the study population .bim .bed and .fam files.
+
+   AllelesChangedToEffectAllele.stats: lists which SNPs with opposite allele counts in the study population (compared to the UK Biobank)
+   
+   SNPsAfterThresh*.stats: one stats file per chromosome, states the number of SNPs included for each chromosome (after p-value thresholding). Note that the SNPsAfterThresh*.stats files are output to "./tmp/" rather than to the output folder.
+
+
