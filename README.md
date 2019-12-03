@@ -87,7 +87,7 @@ The files for chromosomes 1-22 will be automatically downloaded into the "./atla
 
 #### Study Population:
 
-   For the population you are calculating risk scores for, you will need .bim .bed and .fam files for each of the chromosomes you will be including in the study. These files should be placed in the "./binaryFiles/" folder, with no other files present. Alternatively they may be placed in another directory, but still must be the only files present in the directory.
+   For the population you are calculating risk scores for, you will need .bim .bed and .fam files for each of the chromosomes you will be including in the study. These files should be placed in the "./binaryFiles/" folder, with no other files present. Alternatively they may be placed in another directory, but they should be the only files present in the directory.
 
 ### 3) Run extractPGRS.sh
 
