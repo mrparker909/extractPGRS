@@ -73,8 +73,10 @@ git clone https://github.com/mrparker909/extractPGRS
    First choose a trait to calculate a risk score for, this can be done here: http://geneatlas.roslin.ed.ac.uk/trait/
 
    Once you have chosen a trait, the trait number is shown in the URL (eg: trait number is 6 for "psychological/psychiatric problem"): http://geneatlas.roslin.ed.ac.uk/trait/?traits=6 
+   
+   The files needed are the imputed genotype files and the imputed genotype snp files for each chromosome included in the study (see the image below).
 
-   The files needed are the imputed genotype files and the imputed genotype snp files for each chromosome included in the study.
+   ![geneAtlasImage](https://github.com/mrparker909/extractPGRS/blob/master/geneAtlasDownload_markedup.png)
 
    These can be downloaded manually, or using the script "./Rscripts/scrapeWebLinks.R", inputing the trait number for the desired trait like so (in this example trait number=6):
 ```
