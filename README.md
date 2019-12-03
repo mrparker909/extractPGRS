@@ -61,6 +61,8 @@ git clone https://github.com/mrparker909/extractPGRS
 - pracma
 - stringr
 - rvest
+- xml2
+- selectr
 ```
 
    Note 1: the file "RlibPath.txt" can be used to specify the location to which the libraries are installed, and can be deleted if the libraries are installed at .libPaths()[1]. This is to allow running the script on a remote cluster without library path write permissions. If you do need to use this file, edit the contents so that it contains your specific R library path. You can find your library paths by running: 
@@ -72,7 +74,7 @@ in R. The libraries should be installed to this directory, eg using:
 LIBPATH = .libPaths()[1]
 install.packages("dplyr", lib=LIBPATH)
 ```
-   Note 2: the packages "stringr" and "rvest" are used for web scraping to automate downloading of the GeneAtlas files, and are not necessary if you will be manually downloading the files.
+   Note 2: the packages "stringr", "rvest", "xml2", and "selectr" are used for web scraping to automate downloading of the GeneAtlas files (Rscript "scrapeWebLinks.R", and are not necessary if you will be manually downloading the files.
 
 ### 2) Necessary Files
 
