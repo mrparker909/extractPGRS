@@ -91,6 +91,8 @@ The files for chromosomes 1-22 will be automatically downloaded into the "./atla
 
 ### 3) Run extractPGRS.sh
 
+   Note: "run.sh" is included as an example, however you will likely need to write your own job script if you are using a job scheduler.
+   
    Either submit run.sh to a job scheduler for remote computing, or run extractPGRS.sh locally:
 ```
 sh extractPGRS.sh atlasFiles/ binaryFiles/ 0.000000005 output/
@@ -103,3 +105,9 @@ sh extractPGRS.sh atlasFiles/ binaryFiles/ 0.000000005 output/
    The third argument (in this case "0.000000005") is the p-value threshold for including SNPs in the risk score calculation.
 
    The fourth argument (in this case "output/") is the location to place output files (such as the calculated risk scores).
+   
+### 4) Polygenic Risk Scores
+
+   The PGRS will be located in the "./output/" directory (or whichever output directory was specified). The risk scores will be written to the file "RiskScores.tsv", with the first column containing the subject IDs, and the second column containing the calculated risk scores for each subject.
+   
+   Several .stats files are produced to track operations throughout the process. 
