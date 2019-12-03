@@ -37,6 +37,15 @@ sh extractPGRS.sh atlasFiles/ binaryFiles/ 0.000005 output/
 
 ## Instructions
 
+### 0) Clone Repo
+   
+   This repository contains all the necessary scripts and the recommended folder structure.
+   
+   Clone this repo to your working directory:
+```
+git clone https://github.com/mrparker909/extractPGRS
+```
+
 ### 1) Prerequisite Software
 
    Software:
