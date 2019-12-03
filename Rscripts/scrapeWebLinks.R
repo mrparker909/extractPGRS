@@ -1,5 +1,12 @@
-library(rvest)
-library(stringr)
+LIBPATH = .libPaths()[1]
+if(file.exists("RlibPath.txt")) {
+  LIBPATH = paste(readLines("RlibPath.txt"), collapse=" ")
+}
+
+library(selectr, lib=LIBPATH)
+library(xml2,    lib=LIBPATH)
+library(rvest,   lib=LIBPATH)
+library(stringr, lib=LIBPATH)
 
 # input trait number on command line
 args = commandArgs(trailingOnly = T)
