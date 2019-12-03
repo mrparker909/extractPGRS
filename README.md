@@ -74,11 +74,11 @@ git clone https://github.com/mrparker909/extractPGRS
 
    Once you have chosen a trait, the trait number is shown in the URL (eg: trait number is 76 for "depression"): http://geneatlas.roslin.ed.ac.uk/trait/?traits=76 
    
-   The files needed are the imputed genotype files (under the column "Imputed Results") and the imputed genotype snp files (under the column "Variants" immediately after the "Imputed Results" column) for each chromosome included in the study (see the image below).
+   The files needed are the imputed genotype files (under the column "Imputed Results") and the imputed genotype snp files (under the column "Variant info." immediately after the "Imputed Results" column) for each chromosome included in the study (see the image below).
 
    ![geneAtlasImage](https://github.com/mrparker909/extractPGRS/blob/master/geneAtlasDownload_markedup.png)
 
-   These can be downloaded manually, or using the script "./Rscripts/scrapeWebLinks.R", inputing the trait number for the desired trait like so (in this example trait number=76):
+   These can be downloaded manually, or using the script "./Rscripts/scrapeWebLinks.R", by inputing the trait number for the desired trait as a command argument, such as (in this example trait number=76):
 ```
 Rscript ./Rscripts/scrapeWebLinks.R 76
 ```
