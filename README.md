@@ -59,7 +59,7 @@ Note 2: the packages "stringr" and "rvest" are used for web scraping to automate
 
 ### 2) Necessary Files
 
-Gene Atlas:
+#### Gene Atlas:
 
 First choose a trait to calculate a risk score for, this can be done here: http://geneatlas.roslin.ed.ac.uk/trait/
 
@@ -74,6 +74,17 @@ Rscript ./Rscripts/scrapeWebLinks.R 6
 
 The files for chromosomes 1-22 will be automatically downloaded into the "./atlasFiles/" folder.
 
-Study Population:
+#### Study Population:
 
-For the population you are calculating risk scores for, you will need .bim .bed and .fam files for each of the chromosomes you will be including in the study. These files should be placed in the ./binaryFiles/ folder, with no other files present. Alternatively they may be placed in another directory, but still must be the only files present in the directory.
+For the population you are calculating risk scores for, you will need .bim .bed and .fam files for each of the chromosomes you will be including in the study. These files should be placed in the "./binaryFiles/" folder, with no other files present. Alternatively they may be placed in another directory, but still must be the only files present in the directory.
+
+### 3) Run extractPGRS.sh
+
+Either submit run.sh to a job scheduler for remote computing, or run extractPGRS.sh locally:
+```
+sh extractPGRS.sh atlasFiles/ binaryFiles/ 0.000000005 output/
+```
+
+The first argument (in this case "atlasFiles/") is the location of the downloaded and unzipped GeneAtlas files (2 files per chromosome). The second argument (in this case "binaryFiles/") is the location of the study population .bim/.bed/.fam files (3 files per chromosome).
+The third argument (in this case "0.000000005") is the p-value threshold for including SNPs in the risk score calculation.
+The fourth argument (in this case "output/") is the location to place output files (such as the calculated risk scores).
