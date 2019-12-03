@@ -1,6 +1,15 @@
-library(dplyr, quietly=T, warn.conflicts=F)
-library(magrittr, quietly=T, warn.conflicts=F)
-library(pracma, quietly=T, warn.conflicts=F)
+libPath = .libPaths()[1]
+if(file.exists("RlibPath.txt")) {
+  libPath = paste(readLines("RlibPath.txt"), collapse=" ")
+}
+
+if(!require(dplyr, quietly=T, warn.conflicts=F)) { install.packages("dplyr", lib=libPath, dependencies=T,repos = "http://cran.us.r-project.org", quiet=T) }
+if(!require(magrittr, quietly=T, warn.conflicts=F)) { install.packages("magrittr", lib=libPath, dependencies=T,repos = "http://cran.us.r-project.org", quiet=T) }
+if(!require(pracma, quietly=F, warn.conflicts=F)) { install.packages("pracma", lib=libPath, dependencies=T,repos = "http://cran.us.r-project.org", quiet=T) }
+
+library(dplyr, quietly=T, warn.conflicts=F, lib=libPath)
+library(magrittr, quietly=T, warn.conflicts=F, lib=libPath)
+library(pracma, quietly=T, warn.conflicts=F, lib=libPath)
 
 args          = commandArgs(trailingOnly=T)
 rsIDPath      = args[1] # list of rsIDs to keep
@@ -84,7 +93,6 @@ strandSwitch <- function(A1A2) {
 }
 ################################
 
-
 # list of rsIDs to keep
 rsIDsToKeep = read.csv(rsIDPath, header=F, stringsAsFactors=F, quote="")[,1]
 
@@ -92,13 +100,13 @@ rsIDsToKeep = read.csv(rsIDPath, header=F, stringsAsFactors=F, quote="")[,1]
 bimFiles = list.files(path=bimPath, pattern = ".*.bim")
 
 # read and process first file:
-rF  = read.table(paste0(bimPath,bimFiles[1]), header = F, sep="\t", stringsAsFactors=F)
+rF  = read.table(paste0(bimPath,bimFiles[1]), header = T, sep="\t", stringsAsFactors=F)
 colnames(rF) =  c("chromosome", "rsID", "position","coordinate", "A1", "A2")
 rF = rF %>% filter(rsID %in% rsIDsToKeep)
 
 # bind columns of each file by IID
 for(file in bimFiles[-1]) {
-  f = read.table(paste0(bimPath,file), header = F, sep="\t", stringsAsFactors=F)
+  f = read.table(paste0(bimPath,file), header = T, sep="\t", stringsAsFactors=F)
   colnames(f) =  c("chromosome", "rsID", "position","coordinate", "A1", "A2")
   f = f %>% filter(rsID %in% rsIDsToKeep)
 
@@ -111,8 +119,6 @@ if(nrow(rF)==0) {
 
 write.table(x = rsIDsToKeep[-which(rsIDsToKeep %in% rF$rsID)],
             sep="\t", row.names = F, col.names = F, file=paste0(outputFolder,"missing_SNPs.stats"), quote=F)
-
-
 
 # read in reference allele data
 # keep: rsID ref Beta A1 A2
@@ -153,7 +159,7 @@ rsIDsCHANGED = colnames(rawFile)[-c(1:6)][which(decision != 1)]
 print(paste0("Allele mismatches compared to Effect Alleles: ", changedReference))
 if(changedReference > 0) {
   write.table(x = data.frame(IDsChanged=rsIDsCHANGED),
-              sep=" ", row.names = F, col.names = F, file=paste0(outputFolder,"AllelesChangedToEffectAllele.stats"))
+              sep=" ", quote=F, row.names = F, col.names = F, file=paste0(outputFolder,"AllelesChangedToEffectAllele.stats"))
 
 }
 
