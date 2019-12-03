@@ -63,7 +63,7 @@ git clone https://github.com/mrparker909/extractPGRS
 - rvest
 ```
 
-   Note 1: the file "RlibPath.txt" can be used to specify the location to which the libraries are installed, and can be deleted if the libraries are installed at .libPaths()[1]. This is to allow running the script on a remote cluster without library path write permissions. If you do need to file, edit the contents so that it contains your specific R library path. You can find your library paths by running: 
+   Note 1: the file "RlibPath.txt" can be used to specify the location to which the libraries are installed, and can be deleted if the libraries are installed at .libPaths()[1]. This is to allow running the script on a remote cluster without library path write permissions. If you do need to use this file, edit the contents so that it contains your specific R library path. You can find your library paths by running: 
 ```
    .libPaths()
 ```
