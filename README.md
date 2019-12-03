@@ -49,7 +49,6 @@ sh extractPGRS.sh atlasFiles/ binaryFiles/ 0.000005 output/
 ```
 - dplyr
 - magrittr
-- argparser
 - stringr
 - rvest
 ```
