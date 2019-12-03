@@ -33,3 +33,47 @@ sh extractPGRS.sh atlasFiles/ binaryFiles/ 0.000005 output/
 | - | output
 | - | tmp
 ```
+
+## Instructions
+
+### 1) Prerequisite Software
+
+Software:
+```
+- plink2
+- R
+```
+
+R Packages:
+```
+- dplyr
+- magrittr
+- argparser
+- stringr
+- rvest
+```
+
+Note 1: the file "RlibPath.txt" is used to specify the location to which the libraries are installed, and can be deleted if the libraries are installed at .libPaths()[1]. This is to allow running the script on a remote cluster without library path write permissions.
+
+Note 2: the packages "stringr" and "rvest" are used for web scraping to automate downloading of the GeneAtlas files, and are not necessary if you will be manually downloading the files.
+
+### 2) Necessary Files
+
+Gene Atlas:
+
+First choose a trait to calculate a risk score for, this can be done here: http://geneatlas.roslin.ed.ac.uk/trait/
+
+Once you have chosen a trait, the trait number is shown in the URL (eg: trait number is 6 for "psychological/psychiatric problem"): http://geneatlas.roslin.ed.ac.uk/trait/?traits=6 
+
+The files needed are the imputed genotype files and the imputed genotype snp files for each chromosome included in the study.
+
+These can be downloaded manually, or using the script "./Rscripts/scrapeWebLinks.R", inputing the trait number for the desired trait like so (in this example trait number=6):
+```
+Rscript ./Rscripts/scrapeWebLinks.R 6
+```
+
+The files for chromosomes 1-22 will be automatically downloaded into the "./atlasFiles/" folder.
+
+Study Population:
+
+For the population you are calculating risk scores for, you will need .bim .bed and .fam files for each of the chromosomes you will be including in the study. These files should be placed in the ./binaryFiles/ folder, with no other files present. Alternatively they may be placed in another directory, but still must be the only files present in the directory.
