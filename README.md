@@ -58,11 +58,12 @@ git clone https://github.com/mrparker909/extractPGRS
 ```
 - dplyr
 - magrittr
+- pracma
 - stringr
 - rvest
 ```
 
-   Note 1: the file "RlibPath.txt" is used to specify the location to which the libraries are installed, and can be deleted if the libraries are installed at .libPaths()[1]. This is to allow running the script on a remote cluster without library path write permissions.
+   Note 1: the file "RlibPath.txt" can be used to specify the location to which the libraries are installed, and can be deleted if the libraries are installed at .libPaths()[1]. This is to allow running the script on a remote cluster without library path write permissions.
 
    Note 2: the packages "stringr" and "rvest" are used for web scraping to automate downloading of the GeneAtlas files, and are not necessary if you will be manually downloading the files.
 
@@ -72,9 +73,9 @@ git clone https://github.com/mrparker909/extractPGRS
 
    First choose a trait to calculate a risk score for, this can be done here: http://geneatlas.roslin.ed.ac.uk/trait/
 
-   Once you have chosen a trait, the trait number is shown in the URL (eg: trait number is 76 for "depression"): http://geneatlas.roslin.ed.ac.uk/trait/?traits=76 
+   Once you have chosen a trait, the trait number is shown in the URL (eg: for the "depression" trait, the trait number is 76): http://geneatlas.roslin.ed.ac.uk/trait/?traits=76 
    
-   The files needed are the imputed genotype files (under the column "Imputed Results") and the imputed genotype snp files (under the column "Variant info." immediately after the "Imputed Results" column) for each chromosome included in the study (see the image below).
+   The files needed are the imputed genotype files for each chromosome included in the study, (under the column "Imputed Results") and the imputed genotype snp files (under the column "Variant info." immediately after the "Imputed Results" column) see the image below for clarification.
 
    ![geneAtlasImage](https://github.com/mrparker909/extractPGRS/blob/master/geneAtlasDownload_markedup.png)
 
