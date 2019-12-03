@@ -7,7 +7,7 @@ echo 'p-value cutoff = ' $3
 echo 'outputFolder = ' $4
 
 module load plink2
-module load R
+module load R/3.5.0
 
 mkdir -p tmp
 
@@ -18,19 +18,16 @@ do
 
   # create ./tmp/atlas.tmp${i}
   # create ./tmp/atlas.snp.tmp${i}
-  Rscript ./Rscripts/filter_pvalue.R -a ${f} -p $3 -i ${i}
+  Rscript ./Rscripts/filter_pvalue.R ${f} $3 ${i}
 
   i=`expr $i + 1`
 done
 echo "Done processing atlasFiles"
 
+echo "Concatenating atlas.tmp* files..."
 # concatenate output tempFiles into tempFile_cat
-cat ./tmp/atlas.tmp* > ./tmp/atlas_cat.tmp
-rm ./tmp/atlas.tmp*
+Rscript ./Rscripts/catTempFiles.R
 cat ./tmp/atlas_cat.tmp | cut -f1 | tail -n +2  > ./tmp/ATLASrsID.txt
-
-cat ./tmp/atlas.snp.tmp* > ./tmp/atlas.snp_cat.tmp
-rm ./tmp/atlas.snp.tmp*
 
 # join atlas_cat.tmp with atlas.snp_cat.tmp (we need A1 and A2 from snp files)
 Rscript ./Rscripts/join_atlas.R ./tmp/atlas_cat.tmp ./tmp/atlas.snp_cat.tmp
