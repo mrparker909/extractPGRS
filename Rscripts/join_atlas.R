@@ -1,13 +1,13 @@
-libPath = .libPaths()[1]
+LIBPATH = .libPaths()[1]
 if(file.exists("RlibPath.txt")) {
-  libPath = paste(readLines("RlibPath.txt"), collapse=" ")
+  LIBPATH = paste(readLines("RlibPath.txt"), collapse=" ")
 }
 
-if(!require(dplyr, quietly=T, warn.conflicts=F)) { install.packages("dplyr", lib=libPath, dependencies=T,repos = "http://cran.us.r-project.org", quiet=T) }
-if(!require(magrittr, quietly=T, warn.conflicts=F)) { install.packages("magrittr", lib=libPath, dependencies=T,repos = "http://cran.us.r-project.org", quiet=T) }
+if(!require(dplyr, quietly=T, warn.conflicts=F)) { install.packages("dplyr", lib=LIBPATH, dependencies=T,repos = "http://cran.us.r-project.org", quiet=T) }
+if(!require(magrittr, quietly=T, warn.conflicts=F)) { install.packages("magrittr", lib=LIBPATH, dependencies=T,repos = "http://cran.us.r-project.org", quiet=T) }
 
-library("dplyr", quietly=T, warn.conflicts=F, lib=libPath)
-library("magrittr", quietly=T, warn.conflicts=F, lib=libPath)
+library("dplyr", quietly=T, warn.conflicts=F, lib=LIBPATH)
+library("magrittr", quietly=T, warn.conflicts=F, lib=LIBPATH)
 
 args = commandArgs(trailingOnly=T)
 in1 = args[1] # atlas file, eg snps file
